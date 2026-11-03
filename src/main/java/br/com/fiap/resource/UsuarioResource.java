@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/moveup/usuario")
 public class UsuarioResource {
@@ -24,9 +26,13 @@ public class UsuarioResource {
     }
 
     @GetMapping
-    public ResponseEntity<?> findAll() {
-        // Lógica para listar os usuários
-        return ResponseEntity.ok(usuarioBO.findAll());
+    public ResponseEntity<List<UsuarioTO>> findAll(){
+        List<UsuarioTO> usuarios = usuarioBO.findAll();
+        if (usuarios != null){
+            return  ResponseEntity.status(HttpStatus.OK).body(usuarios);
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(usuarios);
+        }
     }
 
     @GetMapping("/{idUsuario}")
@@ -53,7 +59,7 @@ public class UsuarioResource {
         try{
             usuario.setIdUsuario(idUsuario);
             UsuarioTO resultado = usuarioBO.update(usuario);
-            return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+            return ResponseEntity.status(HttpStatus.CREATED).body(resultado);
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao atualizar usuário");

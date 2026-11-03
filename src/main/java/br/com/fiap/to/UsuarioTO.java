@@ -4,20 +4,20 @@ import jakarta.validation.constraints.*;
 
 public class UsuarioTO {
     private Integer idUsuario;
+
     @NotBlank
     private String nomeUsuario;
+
     @Email @NotBlank
     private String email;
+
     @NotBlank
-    @Size(min = 8, max = 100, message = "A senha deve ter entre 8 e 100 caracteres")
+    @Size(min = 8, max = 100)
     @Pattern(
             regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!_]).*$",
             message = "A senha deve conter pelo menos um número, uma letra maiúscula, uma letra minúscula e um caractere especial"
     )
     private String senha;
-
-
-
 
     public UsuarioTO(){
 

@@ -20,6 +20,10 @@ public class UsuarioDAO {
                 return null;
             }
         } catch (SQLException e) {
+
+            if (e.getErrorCode() == 1) {
+                throw new RuntimeException("Usuário já cadastrado.");
+            }
             System.out.println("Erro ao salvar: " + e.getMessage());
         } finally {
             ConnectionFactory.closeConnection();
@@ -32,7 +36,7 @@ public class UsuarioDAO {
         String sql = "select * from ddd_usuario order by id_usuario";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
             ResultSet rs = ps.executeQuery();
-            if (rs !=null){
+            if (rs != null){
                     while (rs.next()){
                         UsuarioTO usuario = new UsuarioTO();
                         usuario.setIdUsuario(rs.getInt("id_usuario"));
@@ -67,7 +71,7 @@ public class UsuarioDAO {
                 return null;
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Erro ao consultar usuário: " + e.getMessage());
         }finally {
             ConnectionFactory.closeConnection();
         }
@@ -99,30 +103,12 @@ public class UsuarioDAO {
             }else{
                 return null;
             }
-
-    } catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Erro ao atualizar: " + e.getMessage());
-
         }finally {
             ConnectionFactory.closeConnection();
         }
-    return null;
-
+        return null;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
