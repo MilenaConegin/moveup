@@ -21,11 +21,7 @@ public class VoucherResource {
             VoucherTO resultado = voucherBO.save(voucher);
             return ResponseEntity.status(HttpStatus.CREATED).body(resultado);
         } catch (Exception e) {
-           // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao salvar voucher");
-            e.printStackTrace();
-
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Erro ao salvar voucher: " + e.getMessage());
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao salvar voucher");
         }
     }
 
