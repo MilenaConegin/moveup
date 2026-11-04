@@ -24,18 +24,25 @@ Tecnologias utilizadas
 - Docker — configuração de empacotamento e execução em contêiner.
 - Render — hospedagem do serviço.
 
-Estrutura do projeto
+## Estrutura do projeto
+
 A aplicação segue uma organização em camadas:
+
+```text
 src/
 └── main/
-    ├── java/br/com/fiap/
-    │   ├── bo/          # Regras de negócio e validações
-    │   ├── dao/         # Acesso e operações no banco de dados
-    │   ├── resource/    # Endpoints REST da API
-    │   ├── to/          # Objetos de transferência de dados
-    │   └── MoveupApplication.java
+    ├── java/
+    │   └── br/
+    │       └── com/
+    │           └── fiap/
+    │               ├── bo/          # Regras de negócio e validações
+    │               ├── dao/         # Acesso e operações no banco de dados
+    │               ├── resource/    # Endpoints REST da API
+    │               ├── to/          # Objetos de transferência de dados
+    │               └── MoveupApplication.java
     └── resources/
         └── application.properties
+```
 - Resource: recebe as requisições HTTP e retorna as respostas.
 - BO (Business Object): concentra regras de negócio e validações.
 - DAO (Data Access Object): executa operações de persistência no banco de dados.
