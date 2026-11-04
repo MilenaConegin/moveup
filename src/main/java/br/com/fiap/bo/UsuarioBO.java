@@ -49,7 +49,7 @@ public class UsuarioBO {
         return usuarioDAO.findAll();
     }
 
-    public  UsuarioTO findById(int idUsuario){
+    public  UsuarioTO findById(Integer idUsuario){
         usuarioDAO = new UsuarioDAO();
 
         if (idUsuario <= 0) {
@@ -61,7 +61,7 @@ public class UsuarioBO {
         return usuarioDAO.findById(idUsuario);
     }
 
-    public boolean delete(int idUsuario){
+    public boolean delete(Integer idUsuario){
         usuarioDAO = new UsuarioDAO();
 
         if (idUsuario <= 0) {

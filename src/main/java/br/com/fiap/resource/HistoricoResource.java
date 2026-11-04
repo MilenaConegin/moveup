@@ -40,7 +40,7 @@ public class HistoricoResource {
     }
 
     @GetMapping("/{idHistorico}")
-    public ResponseEntity<?> findById(@PathVariable int idHistorico) {
+    public ResponseEntity<?> findById(@PathVariable Integer idHistorico) {
         HistoricoTO historico = historicoBO.findById(idHistorico);
         if (historico != null){
             return ResponseEntity.status(HttpStatus.OK).body(historico);
@@ -50,7 +50,7 @@ public class HistoricoResource {
     }
 
     @DeleteMapping("/{idHistorico}")
-    public ResponseEntity<String> delete(@PathVariable int idHistorico) {
+    public ResponseEntity<String> delete(@PathVariable Integer idHistorico) {
         if (historicoBO.delete(idHistorico)){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Histórico deletado com sucesso!");
         }else {
@@ -59,7 +59,7 @@ public class HistoricoResource {
     }
 
     @PutMapping("/{idHistorico}")
-    public ResponseEntity<?> update(@PathVariable int idHistorico, @RequestBody @Valid HistoricoTO historico) {
+    public ResponseEntity<?> update(@PathVariable Integer idHistorico, @RequestBody @Valid HistoricoTO historico) {
         try{
             historico.setIdHistorico(idHistorico);
             HistoricoTO resultado = historicoBO.update(historico);

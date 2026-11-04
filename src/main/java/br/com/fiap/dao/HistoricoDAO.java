@@ -17,7 +17,7 @@ public class HistoricoDAO {
             ps.setDate(1, Date.valueOf(historico.getData()));
             ps.setString(2, historico.getTransporte());
             ps.setInt(3, historico.getQuantidadePassagem());
-            ps.setDouble(4, historico.getPontos());
+            ps.setInt(4, historico.getPontos());
             ps.setString(5, historico.getStatus());
             if (ps.executeUpdate() > 0) {
                 return historico;
@@ -44,7 +44,7 @@ public class HistoricoDAO {
                     historico.setData(rs.getDate("data_historico").toLocalDate());
                     historico.setTransporte(rs.getString("transporte"));
                     historico.setQuantidadePassagem(rs.getInt("qtd_passagem"));
-                    historico.setPontos(rs.getDouble("pontos"));
+                    historico.setPontos(rs.getInt("pontos"));
                     historico.setStatus(rs.getString("status"));
                     historicos.add(historico);
                 }
@@ -60,7 +60,7 @@ public class HistoricoDAO {
         return historicos;
     }
 
-    public HistoricoTO findById(int idHistorico) {
+    public HistoricoTO findById(Integer idHistorico) {
         HistoricoTO historico = new HistoricoTO();
         String sql = "select * from ddd_historico where id_historico = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
@@ -71,7 +71,7 @@ public class HistoricoDAO {
                     historico.setData(rs.getDate("data_historico").toLocalDate());
                     historico.setTransporte(rs.getString("transporte"));
                     historico.setQuantidadePassagem(rs.getInt("qtd_passagem"));
-                    historico.setPontos(rs.getDouble("pontos"));
+                    historico.setPontos(rs.getInt("pontos"));
                     historico.setStatus(rs.getString("status"));
                 }else {
                     return null;
@@ -85,7 +85,7 @@ public class HistoricoDAO {
         return historico;
     }
 
-    public boolean delete(int idHistorico) {
+    public boolean delete(Integer idHistorico) {
         String sql = "delete from ddd_historico where id_historico = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
             ps.setInt(1, idHistorico);
@@ -105,7 +105,7 @@ public class HistoricoDAO {
             ps.setDate(1, Date.valueOf(historico.getData()));
             ps.setString(2, historico.getTransporte());
             ps.setInt(3, historico.getQuantidadePassagem());
-            ps.setDouble(4, historico.getPontos());
+            ps.setInt(4, historico.getPontos());
             ps.setString(5, historico.getStatus());
             ps.setInt(6, historico.getIdHistorico());
             if (ps.executeUpdate() > 0) {

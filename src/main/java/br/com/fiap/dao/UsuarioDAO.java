@@ -56,7 +56,7 @@ public class UsuarioDAO {
         return usuarios;
     }
 
-    public UsuarioTO findById(int idUsuario){
+    public UsuarioTO findById(Integer idUsuario){
         UsuarioTO usuario = new UsuarioTO();
         String sql = "select * from ddd_usuario where id_usuario = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
@@ -78,7 +78,7 @@ public class UsuarioDAO {
         return usuario;
     }
 
-    public boolean delete(int idUsuario){
+    public boolean delete(Integer idUsuario){
         String sql = "delete from ddd_usuario where id_usuario = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)){
             ps.setInt(1, idUsuario);
@@ -104,7 +104,7 @@ public class UsuarioDAO {
                 return null;
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao atualizar: " + e.getMessage());
+
         }finally {
             ConnectionFactory.closeConnection();
         }

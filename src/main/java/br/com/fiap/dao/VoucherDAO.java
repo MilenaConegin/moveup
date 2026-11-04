@@ -61,7 +61,7 @@ public class VoucherDAO {
         return vouchers;
     }
 
-    public VoucherTO findByCd(int cdCartao) {
+    public VoucherTO findByCd(Integer cdCartao) {
         VoucherTO voucher = new VoucherTO();
         String sql = "select * from ddd_voucher where cd_cartao = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
@@ -86,7 +86,7 @@ public class VoucherDAO {
         return voucher;
     }
 
-    public boolean delete(int cdCartao) {
+    public boolean delete(Integer cdCartao) {
         String sql = "delete from ddd_voucher where cd_cartao = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
             ps.setInt(1, cdCartao);

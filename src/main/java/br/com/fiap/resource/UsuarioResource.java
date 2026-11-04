@@ -36,7 +36,7 @@ public class UsuarioResource {
     }
 
     @GetMapping("/{idUsuario}")
-    public ResponseEntity<?> findById(@PathVariable int idUsuario){
+    public ResponseEntity<?> findById(@PathVariable Integer idUsuario){
         UsuarioTO usuario = usuarioBO.findById(idUsuario);
         if (usuario != null){
             return ResponseEntity.status(HttpStatus.OK).body(usuario);
@@ -46,7 +46,7 @@ public class UsuarioResource {
     }
 
     @DeleteMapping ("/{idUsuario}")
-    public ResponseEntity<String> delete(@PathVariable int idUsuario){
+    public ResponseEntity<String> delete(@PathVariable Integer idUsuario){
         if (usuarioBO.delete(idUsuario)){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Usuário deletado com sucesso!");
         }else {
@@ -55,7 +55,7 @@ public class UsuarioResource {
     }
 
     @PutMapping("/{idUsuario}")
-    public ResponseEntity<?> update(@PathVariable int idUsuario, @RequestBody @Valid UsuarioTO usuario){
+    public ResponseEntity<?> update(@PathVariable Integer idUsuario, @RequestBody @Valid UsuarioTO usuario){
         try{
             usuario.setIdUsuario(idUsuario);
             UsuarioTO resultado = usuarioBO.update(usuario);

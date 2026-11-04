@@ -20,7 +20,7 @@ public class HistoricoTO {
     private Integer quantidadePassagem;
 
     @PositiveOrZero
-    private double pontos;
+    private Integer pontos;
 
     @NotBlank
     @Pattern(
@@ -33,7 +33,7 @@ public class HistoricoTO {
 
     }
 
-    public HistoricoTO(Integer idHistorico, LocalDate data, String transporte, Integer quantidadePassagem, double pontos, String status){
+    public HistoricoTO(Integer idHistorico, LocalDate data, String transporte, Integer quantidadePassagem, Integer pontos, String status){
         setIdHistorico(idHistorico);
         setData(data);
         setTransporte(transporte);
@@ -74,11 +74,11 @@ public class HistoricoTO {
         this.quantidadePassagem = quantidadePassagem;
     }
 
-    public double getPontos() {
+    public Integer getPontos() {
         return pontos;
     }
 
-    public void setPontos(double pontos) {
+    public void setPontos(Integer pontos) {
         this.pontos = pontos;
     }
 

@@ -56,7 +56,7 @@ public class HistoricoBO {
         return historicoDAO.findAll();
     }
 
-    public HistoricoTO findById(int idHistorico) {
+    public HistoricoTO findById(Integer idHistorico) {
 
         historicoDAO = new HistoricoDAO();
 
@@ -69,7 +69,7 @@ public class HistoricoBO {
         return historicoDAO.findById(idHistorico);
     }
 
-    public boolean delete(int idHistorico) {
+    public boolean delete(Integer idHistorico) {
         historicoDAO = new HistoricoDAO();
 
         if (idHistorico <= 0) {

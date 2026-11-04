@@ -51,7 +51,7 @@ public class VoucherBO {
         return voucherDAO.findAll();
     }
 
-    public  VoucherTO findByCd(int cdCartao){
+    public  VoucherTO findByCd(Integer cdCartao){
         voucherDAO = new VoucherDAO();
 
         if (cdCartao <= 0) {
@@ -63,7 +63,7 @@ public class VoucherBO {
         return voucherDAO.findByCd(cdCartao);
     }
 
-    public boolean delete(int cdCartao){
+    public boolean delete(Integer cdCartao){
         voucherDAO = new VoucherDAO();
 
         if (cdCartao <= 0) {

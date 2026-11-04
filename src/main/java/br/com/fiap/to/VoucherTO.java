@@ -25,13 +25,13 @@ public class VoucherTO {
     private String status;
 
     @PositiveOrZero
-    private double saldoDisponivel;
+    private Double saldoDisponivel;
 
     public VoucherTO(){
 
     }
 
-    public VoucherTO(Integer cdCartao ,String numeroCartao, String titular, String tipo, String status, double saldoDisponivel){
+    public VoucherTO(Integer cdCartao ,String numeroCartao, String titular, String tipo, String status, Double saldoDisponivel){
         setCdCartao(cdCartao);
         setNumeroCartao(numeroCartao);
         setTitular(titular);
@@ -81,11 +81,11 @@ public class VoucherTO {
         this.status = status;
     }
 
-    public double getSaldoDisponivel() {
+    public Double getSaldoDisponivel() {
         return saldoDisponivel;
     }
 
-    public void setSaldoDisponivel(double saldoDisponivel) {
+    public void setSaldoDisponivel(Double saldoDisponivel) {
         this.saldoDisponivel = saldoDisponivel;
     }
 }

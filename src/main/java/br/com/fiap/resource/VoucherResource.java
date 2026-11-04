@@ -40,7 +40,7 @@ public class VoucherResource {
     }
 
     @GetMapping("/{cdCartao}")
-    public ResponseEntity<?> findByCd(@PathVariable int cdCartao){
+    public ResponseEntity<?> findByCd(@PathVariable Integer cdCartao){
         VoucherTO voucher = voucherBO.findByCd(cdCartao);
         if (voucher != null){
             return ResponseEntity.status(HttpStatus.OK).body(voucher);
@@ -50,7 +50,7 @@ public class VoucherResource {
     }
 
     @DeleteMapping ("/{cdCartao}")
-    public ResponseEntity<String> delete(@PathVariable int cdCartao){
+    public ResponseEntity<String> delete(@PathVariable Integer cdCartao){
         if (voucherBO.delete(cdCartao)){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Voucher deletado com sucesso!");
         }else {
@@ -59,7 +59,7 @@ public class VoucherResource {
     }
 
     @PutMapping("/{cdCartao}")
-    public ResponseEntity<?> update(@PathVariable int cdCartao, @RequestBody @Valid VoucherTO voucher){
+    public ResponseEntity<?> update(@PathVariable Integer cdCartao, @RequestBody @Valid VoucherTO voucher){
         try{
             voucher.setCdCartao(cdCartao);
             VoucherTO resultado = voucherBO.update(voucher);
